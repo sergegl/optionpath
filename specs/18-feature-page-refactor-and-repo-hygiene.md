@@ -72,13 +72,16 @@ Rules:
 
 ## Repo Hygiene
 
-- Create `docs/screenshots/`.
-- Move all `*.png` files at repo root into it. Update any reference in markdown docs.
-- Move `dashboard-snapshot.md` into `docs/`.
-- Add to `.gitignore`:
-  - `.playwright-mcp/`
-  - confirm `dist/` is present
-- Do not delete the `.playwright-mcp/` directory from disk; only stop tracking it.
+Verification revealed the existing `.gitignore` already covers everything that looked like clutter:
+
+- `dashboard-*.png`, `builder-*.png`, `payoff-*.png`, `learn-*.png`, `lesson-*.png`, `library-*.png` — all ignored by name patterns. None are tracked.
+- `.playwright-mcp/` — already ignored.
+- `dashboard-snapshot.md` — already ignored.
+- `dist/`, `node_modules/`, `.DS_Store`, `.env*` — already ignored.
+
+The on-disk files at repo root are local artifacts (screenshots from playwright runs, etc.) and are invisible to git. No further action required for hygiene.
+
+The original assessment that these files were "committed at the repo root" was based on `ls` output and was incorrect. `git ls-files` confirms none are tracked.
 
 ## Acceptance Criteria
 
@@ -86,8 +89,8 @@ Rules:
 - `npm test` passes (existing domain tests).
 - Each refactored orchestrator file is ≤ 200 lines.
 - No new entries in `package.json` `dependencies` or `devDependencies`.
-- `git status` at repo root no longer lists tracked PNGs.
-- `.playwright-mcp/` is listed in `.gitignore`.
+- `git status` is clean (was already clean before the refactor; no tracked PNGs found).
+- `.playwright-mcp/` is listed in `.gitignore` (already present).
 
 ## Manual Smoke Tests
 
