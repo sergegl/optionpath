@@ -45,6 +45,8 @@ The first version is a local-first education and simulation app. It does not con
 - [15 - Import, Export + Backup](15-import-export-backup.md)
 - [16 - Training Visuals + Plain Language](16-training-visuals-and-plain-language.md)
 - [17 - Real Market Simulation](17-real-market-simulation.md)
+- [18 - Feature Page Refactor + Repo Hygiene](18-feature-page-refactor-and-repo-hygiene.md)
+- [19 - Lessons Plain-Language Pass](19-lessons-plain-language-pass.md)
 
 ## Shared Terms
 
