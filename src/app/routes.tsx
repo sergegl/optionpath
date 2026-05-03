@@ -9,7 +9,8 @@ import { SettingsPage } from "../features/settings/SettingsPage";
 import { StrategyBuilderPage } from "../features/builder/StrategyBuilderPage";
 import { StrategyDetailPage } from "../features/library/StrategyDetailPage";
 import { StrategyLibraryPage } from "../features/library/StrategyLibraryPage";
-import { LearnPage, LessonPage } from "../features/tutorials/TutorialPages";
+import { LearnPage } from "../features/tutorials/LearnPage";
+import { LessonPage } from "../features/tutorials/LessonPage";
 
 export const router = createBrowserRouter([
   {
