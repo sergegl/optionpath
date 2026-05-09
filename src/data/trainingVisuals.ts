@@ -25,6 +25,7 @@ export type TrainingVisualAsset = {
   id: string;
   kind: TrainingVisualKind;
   component: TrainingVisualComponent;
+  imageSrc?: string;
   title: string;
   caption: string;
   alt: string;
@@ -128,6 +129,7 @@ export const trainingVisualAssets: TrainingVisualAsset[] = [
     id: "visual-long-call-story",
     kind: "payoff_story",
     component: "longCallStory",
+    imageSrc: "/visuals/strategy-cards/long-call.svg",
     title: "Long call story",
     caption: "Pay premium for upside exposure. The premium is the amount at risk in this simplified model.",
     alt: "A payoff story showing a fixed premium loss and rising upside after breakeven.",
@@ -137,6 +139,7 @@ export const trainingVisualAssets: TrainingVisualAsset[] = [
     id: "visual-long-put-story",
     kind: "payoff_story",
     component: "longPutStory",
+    imageSrc: "/visuals/strategy-cards/long-put.svg",
     title: "Long put story",
     caption: "Pay premium for downside exposure. The trade improves as the underlying falls below breakeven.",
     alt: "A payoff story showing long put gains as the underlying moves down.",
@@ -146,6 +149,7 @@ export const trainingVisualAssets: TrainingVisualAsset[] = [
     id: "visual-covered-call-story",
     kind: "risk_scene",
     component: "coveredCallStory",
+    imageSrc: "/visuals/strategy-cards/covered-call.svg",
     title: "Covered call story",
     caption: "Own shares, collect premium, and accept that upside can be capped at the short call strike.",
     alt: "A stock position with a short call cap above it.",
@@ -155,6 +159,7 @@ export const trainingVisualAssets: TrainingVisualAsset[] = [
     id: "visual-cash-secured-put-story",
     kind: "risk_scene",
     component: "cashSecuredPutStory",
+    imageSrc: "/visuals/strategy-cards/cash-secured-put.svg",
     title: "Cash-secured put story",
     caption: "Collect premium while keeping cash ready in case assignment requires buying shares.",
     alt: "A cash reserve beside a short put assignment path.",
@@ -164,6 +169,7 @@ export const trainingVisualAssets: TrainingVisualAsset[] = [
     id: "visual-protective-put-story",
     kind: "risk_scene",
     component: "protectivePutStory",
+    imageSrc: "/visuals/strategy-cards/protective-put.svg",
     title: "Protective put story",
     caption: "Own shares and buy a put to create a modeled downside floor.",
     alt: "A stock position with a protective floor below it.",
@@ -248,4 +254,3 @@ export function getStrategyStory(strategyId: string) {
 export function getGlossaryVisualAsset(termId: string) {
   return getTrainingVisualAsset(glossaryVisualIds[termId]);
 }
-

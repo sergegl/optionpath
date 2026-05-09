@@ -1,4 +1,4 @@
-import { getStrategyStory, getTrainingVisualAsset } from "../../data/trainingVisuals";
+import { getStrategyStory, getTrainingVisualAsset, type TrainingVisualAsset } from "../../data/trainingVisuals";
 import { Badge } from "../../ui/Badge";
 import { clsx } from "../../ui/clsx";
 import { LearningVisualBlock } from "../tutorials/LearningVisualBlock";
@@ -18,8 +18,8 @@ export function StrategyStoryPanel({ className, compact = false, strategyId }: S
   if (compact) {
     return (
       <div className={clsx("rounded-lg border border-line bg-panel-muted p-3", className)}>
-        <div className="grid gap-3 sm:grid-cols-[4.75rem_minmax(0,1fr)]">
-          <MiniStrategySignal strategyId={strategyId} />
+        <div className="grid grid-cols-[6.75rem_minmax(0,1fr)] items-center gap-4">
+          <StrategyStoryImage asset={visualAsset} />
           <div className="min-w-0">
             <Badge tone="support">Story</Badge>
             <p className="mt-2 text-sm font-bold leading-6 text-ink">{story.plainSummary}</p>
@@ -53,42 +53,14 @@ export function StrategyStoryPanel({ className, compact = false, strategyId }: S
   );
 }
 
-function MiniStrategySignal({ strategyId }: { strategyId: string }) {
-  const variant =
-    strategyId === "strategy-long-put"
-      ? "put"
-      : strategyId === "strategy-covered-call"
-        ? "cap"
-        : strategyId === "strategy-cash-secured-put"
-          ? "cash"
-          : strategyId === "strategy-protective-put"
-            ? "floor"
-            : "call";
-
+function StrategyStoryImage({ asset }: { asset?: TrainingVisualAsset }) {
   return (
-    <div className="relative min-h-20 overflow-hidden rounded-lg border border-line bg-white/82 p-2">
-      <div className="absolute inset-x-3 bottom-5 h-1 rounded-full bg-ink/18" />
-      <div className="absolute bottom-3 left-5 top-3 w-1 rounded-full bg-ink/18" />
-      {variant === "call" ? <span className="absolute bottom-7 left-5 h-1 w-14 origin-left -rotate-[28deg] rounded-full bg-primary" /> : null}
-      {variant === "put" ? <span className="absolute bottom-7 left-5 h-1 w-14 origin-left rotate-[28deg] rounded-full bg-support" /> : null}
-      {variant === "cap" ? (
-        <>
-          <span className="absolute left-4 right-4 top-4 h-7 rounded-md border border-warning/30 bg-warning/10" />
-          <span className="absolute left-4 right-4 top-10 h-7 rounded-md border border-line bg-panel-muted" />
-        </>
-      ) : null}
-      {variant === "cash" ? (
-        <>
-          <span className="absolute left-3 top-3 rounded-md border border-primary/25 bg-primary/10 px-2 py-1 text-sm font-black text-primary-ink">$</span>
-          <span className="absolute right-3 top-7 rounded-md border border-warning/30 bg-warning/10 px-2 py-1 text-xs font-black text-[#744700]">Put</span>
-        </>
-      ) : null}
-      {variant === "floor" ? (
-        <>
-          <span className="absolute left-4 right-4 bottom-8 h-7 rounded-md border border-primary/25 bg-primary/10" />
-          <span className="absolute bottom-7 left-4 right-4 h-1 rounded-full bg-support" />
-        </>
-      ) : null}
-    </div>
+    <img
+      alt={asset?.alt ?? "Strategy visual thumbnail."}
+      className="aspect-[4/3] w-full rounded-lg border border-line bg-white/82 object-cover shadow-[0_10px_24px_rgba(18,21,18,0.06)]"
+      decoding="async"
+      loading="lazy"
+      src={asset?.imageSrc ?? "/visuals/strategy-cards/long-call.svg"}
+    />
   );
 }

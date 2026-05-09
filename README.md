@@ -106,6 +106,11 @@ OptionPath stores lessons, progress, simulated trades, journal entries, and sett
 
 Detailed feature specs live in [`specs/README.md`](specs/README.md). The real-market simulation plan is documented in [`specs/17-real-market-simulation.md`](specs/17-real-market-simulation.md).
 
+## Style Guides
+
+- [`docs/style-guide/README.md`](docs/style-guide/README.md) - product visual style
+- [`docs/style-guide/image-generation.md`](docs/style-guide/image-generation.md) - image generation rules and prompts
+
 ## Validation
 
 Before publishing changes, run:
